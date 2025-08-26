@@ -1,21 +1,5 @@
 let coupon = "akib20"; 
-document.getElementById('coupon-btn').addEventListener("click", function () {
-    
-    if (coupon === 'use') {
-        alert('this coupon is already used');
-        return
-    }
-    let couponInput  = document.getElementById("coupon-input").value;
-   
-    if(couponInput!==coupon){
-        alert('Invalid Coupon')
-        return
-    }
-    let rendomAmount = Math.floor(Math.random()*100);
-    document.getElementById('discount').innerText = rendomAmount;
-    document.getElementById("coupon-input").value = ' '
-    coupon = 'use'
-})
+
 
 document.getElementById("product").addEventListener("click", function (e) {
 
@@ -55,4 +39,26 @@ document.getElementById("delete-btn").addEventListener("click",function (){
 
 })
 
+document.getElementById('coupon-btn').addEventListener("click", function () {
+    
+    if (coupon === 'use') {
+        alert('this coupon is already used');
+        return
+    }
+    let couponInput  = document.getElementById("coupon-input").value;
+   
+    if(couponInput!==coupon){
+        alert('Invalid Coupon')
+        return
+    }
+    let rendomAmount = Math.floor(Math.random()*100);
+    document.getElementById('discount').innerText = rendomAmount;
+    document.getElementById("coupon-input").value = ' '
+    totalPrice = Number(document.getElementById('total-price').innerText);
+    if(totalPrice > 0 ){
+      let discountAmount = totalPrice - rendomAmount;
+         document.getElementById('total').innerText = discountAmount;
+    }
+    coupon = 'use'
+})
 
